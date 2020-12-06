@@ -1,0 +1,263 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "budget tracker",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "budgetCaptureIntent",
+          "slots": [
+            {
+              "name": "spend",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "earn",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "I bought clothes for {spend} euros",
+            "I bought groceries for {spend} euros",
+            "My parents gave me {earn} euros",
+            "My grandma gave me {earn} euros ",
+            "I got {earn} euros from my parents",
+            "I paid {spend} euros ",
+            "I earned {earn} euros",
+            "I spent {spend} euros",
+            "I spend {spend} and get {earn} euro",
+            "my income is {earn} euro",
+            "i pay {spend} euro",
+            "I pay {spend} euros and earn {earn} euros",
+            "I spent {spend} euros and got {earn} four euros",
+            "I earned {earn} euro",
+            "I spent {spend} euro "
+          ]
+        },
+        {
+          "name": "budgetContinueIntent",
+          "slots": [
+            {
+              "name": "spendCont",
+              "type": "AMAZON.NUMBER"
+            },
+            {
+              "name": "earnCont",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "I earn {earnCont} euros extra",
+            "I spent {spendCont} euros extra ",
+            "i earned {earnCont} euro additionally ",
+            "i spent {spendCont} euro additionally ",
+            "I got additionally {earnCont} euros from my parents",
+            "my parents gave me another {earnCont} euros",
+            "my grandma gave me another {earnCont} euros",
+            "i earn another {earnCont} euros",
+            "i spend another {spendCont} euros",
+            "I bought clothes for another {spendCont} euros",
+            "I paid another {spendCont} euros for groceries",
+            "I spent another {spendCont} euros",
+            "I earned extra {earnCont} euro",
+            "I paid extra {spendCont} euro",
+            "I earn extra {earnCont}  euro",
+            "I pay extra {spendCont} euro",
+            "I spent extra {spendCont} euro"
+          ]
+        },
+        {
+          "name": "restartIntent",
+          "slots": [
+            {
+              "name": "restart",
+              "type": "restartType"
+            }
+          ],
+          "samples": [
+            "{restart} please",
+            "please {restart}",
+            "I would like to {restart}",
+            "I want to {restart}",
+            "{restart}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "name": {
+                "value": "continue",
+                "synonyms": [
+                  "continue",
+                  "continue with the current session",
+                  "proceed",
+                  "carry on",
+                  "resume"
+                ]
+              }
+            },
+            {
+              "name": {
+                "value": "restart",
+                "synonyms": [
+                  "restart",
+                  "start a new session",
+                  "renew",
+                  "begin a new session",
+                  "begin ",
+                  "reset"
+                ]
+              }
+            }
+          ],
+          "name": "restartType"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "budgetCaptureIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "spend",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.843537261342.1539180936728"
+              }
+            },
+            {
+              "name": "earn",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.843537261342.469269371695"
+              }
+            }
+          ]
+        },
+        {
+          "name": "budgetContinueIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "spendCont",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1273786225537.221724351397"
+              }
+            },
+            {
+              "name": "earnCont",
+              "type": "AMAZON.NUMBER",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1273786225537.1141687092744"
+              }
+            }
+          ]
+        },
+        {
+          "name": "restartIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "restart",
+              "type": "restartType",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.462193373194.866413372620"
+              }
+            }
+          ]
+        }
+      ],
+      "delegationStrategy": "ALWAYS"
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.843537261342.1539180936728",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Tell me how much you spent in total today. Please round up your total spending to a whole number. If you did not spend money at all, please say I spent zero euro."
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.843537261342.469269371695",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How much earnings can you account for today? Similarly, the earnings should also be rounded up to a whole number. If you did not earn anything, please say I earned zero euro."
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1367953757316.820855665348",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Would you like to continue with the current budget tracking or start a new session from the beginning?"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1273786225537.221724351397",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How much money did you additionally spend today? Please round up the entry to a whole number. Don\u0027t forget to say the words extra or additionally. If there is no extra spending, please say I spent zero euro additionally."
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1273786225537.1141687092744",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "How much is your extra earning today? Please tell me your earning as a whole number as well. If there is no earning, please say I earned zero euro additionally. And remember the magic words extra or additionally, that will help me a lot."
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.462193373194.866413372620",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Would you like to continue the previous budget tracking or start a new session?"
+          }
+        ]
+      }
+    ]
+  },
+  "version": "18"
+}
